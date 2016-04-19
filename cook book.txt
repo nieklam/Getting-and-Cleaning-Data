@@ -1,0 +1,48 @@
+Some explanation that may help
+
+Basically, from those raw signals, which are each divided into a signal for each axis, 
+they separate out acceleration due to gravity from acceleration due to movement of 
+the subject's body. 
+They then combine all three axes to calculate a one-dimensional magnitude (think finding
+the hypotenuse of a triangle just with an extra dimension) . 
+They also calculate jerk (the derivative of acceleration, or how fast acceleration changes) 
+along all three axes and calculate the one dimensional. Then things get really complicated
+because they use a Fast Fourier Transform to create several new variables which are in the 
+frequency domain rather than the time domain (search youtube for many videos explaining 
+the difference). 
+Then finally they calculate summary statistics for all of these variables, of which we only 
+choose to use mean() and std() for this project. Making things even more confusing, the output 
+of the summary statistics are normalized and bound between -1 and 1 rather than being in 
+the same units as the raw data (m/s^2 for the accelerometer and probably radians/s for the gyroscope).
+
+All credits for this explanation to Austin Dempewolf!
+
+
+The variables (=columns) explained
+ 
+activity                     : the activity done: WALKING, WALKING UPSTAIRS, WALKING DOWNSTAIRS, 
+                               SITTING, STANDING , LAYING              
+dimension                    : the mearsured dimension in space: x, y, z. For cases where these 3 
+                               dimensions are combined the category "overall" is applied 
+domein                       : there are 2 domeins, the time domein (time) and the Fast Fourier 
+                               Transform domein (fft). Its has all to do how the values are calculated.                  
+
+body_acceleration            : the acceleration of the body. It has several dimensions   
+body_acceleration_jerk       : the derivative of body acceleration, or how fast body acceleration changes
+body_acceleration_mag        : like body_acceleration, combining the dimensions
+body_acceleration_jerkmag    : like body_acceleration_jerk, combining the dimensions
+   
+body_gyroscoop               : the place in the space (on x,y,z dimensions)
+body_gyroscoop_jerk          : like body_acceleration_jerk, but here about place in the space instand of
+                               acceleration
+body_gyroscoop_mag           : like body_acceleration_mag, but here about place in the space instand of 
+                               acceleration
+body_gyroscoop_jerkmag       : body_acceleration_jerkmag, but here about place in the space instand of 
+                               acceleration
+
+
+
+gravity_acceleration         : the acceleration due to gravity. It has several dimensions. Remember, if move 
+                               you are hindered by gravity (unless you are on the moon or in outerspace). This 
+                               hinder is stored in this variable
+gravity_acceleration_mag     : the acceleration due to gravity, the dimensions are combined.
