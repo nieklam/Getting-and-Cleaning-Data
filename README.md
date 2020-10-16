@@ -1,6 +1,6 @@
 How the script run_analysis.r works
 
-These several step required to create a tidy data
+These several steps required to create a tidy data
 
 1) 
 The training set and the test set are read. 
@@ -8,7 +8,7 @@ In addition, for each set the column called “label”, represented by integer 
 Next, both sets are stacked into single data file.
 
 2) 
-The the measurements on the mean and standard deviation for each measurement were extracted. 
+The measurements on the mean and standard deviation for each measurement were extracted. 
 
 To select the measurements on the mean it took three sub steps. 
 
